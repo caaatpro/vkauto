@@ -1,0 +1,99 @@
+﻿<Window x:Class="VKAuto.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="VKAuto от CaaatPro" Height="500" Width="500">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="320" VerticalAlignment="Top" Width="492">
+            <TabItem Header="Сбор пользователей">
+                <Grid Background="#FFE5E5E5">
+                    <Button Content="Пуск" x:Name="searchStart" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" Width="75" Click="searchButton_Click"/>
+                    <Label Content="Пользователей:" HorizontalAlignment="Left" Margin="11,83,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="search_total" Content="0" HorizontalAlignment="Left" Margin="180,83,0,0" VerticalAlignment="Top" Width="62"/>
+                    <Label Content="С открытыми ЛС:" HorizontalAlignment="Left" Margin="11,114,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="search_open_message" Content="0" HorizontalAlignment="Left" Margin="180,114,0,0" VerticalAlignment="Top" Width="62"/>
+                    <Label Content="С закрытыми ЛС:" HorizontalAlignment="Left" Margin="11,145,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="search_close_message" Content="0" HorizontalAlignment="Left" Margin="180,145,0,0" VerticalAlignment="Top" Width="62"/>
+                    <Label Content="Ссылка на страницу посика" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="searchUrl" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="232"/>
+                    <Button Content="Стоп" x:Name="searchStop" HorizontalAlignment="Left" Margin="90,193,0,0" VerticalAlignment="Top" Width="75" Click="stopButton_Click" IsEnabled="False"/>
+                    <Image x:Name="searchСaptchaImage" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="130" Margin="317,35,0,0" StretchDirection="UpOnly" Stretch="None"/>
+                    <TextBox x:Name="searchСaptchaText" HorizontalAlignment="Left" Height="19" Margin="283,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194" KeyDown="captchaText_KeyDown"/>
+                    <Label Content="Капча" HorizontalAlignment="Left" Margin="283,10,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Рассылка сообщений">
+                <Grid Background="#FFE5E5E5">
+                    <Button x:Name="messageStart" Content="Запуск" HorizontalAlignment="Left" Margin="10,206,0,0" VerticalAlignment="Top" Width="75" Click="message_Click"/>
+                    <Button x:Name="messageStop" Content="Стоп" HorizontalAlignment="Left" Margin="90,206,0,0" VerticalAlignment="Top" Width="75" Click="stopButton_Click" IsEnabled="False"/>
+                    <Label Content="Пользователей:" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="messageUsers" Content="0" HorizontalAlignment="Left" Margin="172,78,0,0" VerticalAlignment="Top" Width="62"/>
+                    <Label Content="Отправлено:" HorizontalAlignment="Left" Margin="10,109,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="messageSuccess" Content="0" HorizontalAlignment="Left" Margin="172,109,0,0" VerticalAlignment="Top" Width="62"/>
+                    <Label Content="Не удалось:" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="messageFail" Content="0" HorizontalAlignment="Left" Margin="172,140,0,0" VerticalAlignment="Top" Width="62"/>
+                    <TextBox x:Name="messageText" HorizontalAlignment="Left" Height="50" Margin="9,27,0,0" TextWrapping="Wrap" Text="Привет, %fname% %lname%!" VerticalAlignment="Top" Width="239" VerticalScrollBarVisibility="Visible" AcceptsReturn="True"/>
+                    <Label Content="Сообщение" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top"/>
+                    <Image x:Name="messageСaptchaImage" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="130" Margin="316,25,0,0" StretchDirection="UpOnly" Stretch="None"/>
+                    <TextBox x:Name="messageСaptchaText" HorizontalAlignment="Left" Height="19" Margin="282,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194" KeyDown="captchaText_KeyDown"/>
+                    <Label Content="Капча" HorizontalAlignment="Left" Margin="282,0,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Добавление в друзья">
+                <Grid Background="#FFE5E5E5">
+                    <Button x:Name="friendsStart" Content="Запуск" HorizontalAlignment="Left" Margin="10,249,0,0" VerticalAlignment="Top" Width="75" Click="friends_Click"/>
+                    <Button x:Name="friendsStop" Content="Стоп" HorizontalAlignment="Left" Margin="90,249,0,0" VerticalAlignment="Top" Width="75" Click="stopButton_Click" IsEnabled="False"/>
+
+                    <Label Content="Пользователей:" HorizontalAlignment="Left" Margin="11,125,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="friendsUsers" Content="0" HorizontalAlignment="Left" Margin="173,125,0,0" VerticalAlignment="Top" Width="62"/>
+                    <Label Content="Отправлено:" HorizontalAlignment="Left" Margin="11,156,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="friendsSuccess" Content="0" HorizontalAlignment="Left" Margin="173,156,0,0" VerticalAlignment="Top" Width="62"/>
+                    <Label Content="Не удалось:" HorizontalAlignment="Left" Margin="11,187,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="friendsFail" Content="0" HorizontalAlignment="Left" Margin="173,187,0,0" VerticalAlignment="Top" Width="62"/>
+                    <TextBox x:Name="friendsText" HorizontalAlignment="Left" Height="50" Margin="10,70,0,0" TextWrapping="Wrap" Text="Привет, %fname% %lname%!" VerticalAlignment="Top" Width="239" VerticalScrollBarVisibility="Visible" AcceptsReturn="True"/>
+                    <Label Content="Сообщение" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top"/>
+                    <Image x:Name="friendsСaptchaImage" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="130" Margin="316,25,0,0" StretchDirection="UpOnly" Stretch="None"/>
+                    <TextBox x:Name="friendsСaptchaText" HorizontalAlignment="Left" Height="19" Margin="282,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194" KeyDown="captchaText_KeyDown"/>
+                    <Label Content="Капча" HorizontalAlignment="Left" Margin="282,0,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Ссылка на страницу посика" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="friendsUrl" HorizontalAlignment="Left" Height="23" Margin="11,21,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="239"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Приглашения">
+                <Grid Background="#FFE5E5E5">
+                    <Button x:Name="invitationStart" Content="Запуск" HorizontalAlignment="Left" Margin="10,206,0,0" VerticalAlignment="Top" Width="75" Click="invitation_Click"/>
+                    <Button x:Name="invitationStop" Content="Стоп" HorizontalAlignment="Left" Margin="90,206,0,0" VerticalAlignment="Top" Width="75" Click="stopButton_Click" IsEnabled="False"/>
+
+                    <Label Content="ID группы/встречи" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="invitationID" HorizontalAlignment="Left" Height="23" Margin="10,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Пользователей:" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="invitationUsers" Content="0" HorizontalAlignment="Left" Margin="172,55,0,0" VerticalAlignment="Top" Width="62"/>
+                    <Label Content="Отправлено:" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="invitationSuccess" Content="0" HorizontalAlignment="Left" Margin="172,86,0,0" VerticalAlignment="Top" Width="62"/>
+                    <Label Content="Не удалось отправить:" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="invitationFail" Content="0" HorizontalAlignment="Left" Margin="172,117,0,0" VerticalAlignment="Top" Width="62"/>
+                    <Image x:Name="invitationСaptchaImage" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="130" Margin="316,25,0,0" StretchDirection="UpOnly" Stretch="None"/>
+                    <TextBox x:Name="invitationСaptchaText" HorizontalAlignment="Left" Height="19" Margin="282,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194" KeyDown="captchaText_KeyDown"/>
+                    <Label Content="Капча" HorizontalAlignment="Left" Margin="282,0,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Настройки">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,-10">
+                    <Label Content="ID приложения" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="idapp" HorizontalAlignment="Left" Height="23" Margin="10,27,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Ключ antigate.com" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="captchaKey" HorizontalAlignment="Left" Height="23" Margin="10,81,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="300"/>
+                    <Label Content="Интервал запросов (сек.)" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="interval" HorizontalAlignment="Left" Height="23" Margin="10,155,0,0" TextWrapping="Wrap" Text="30" VerticalAlignment="Top" Width="30"/>
+                    <CheckBox x:Name="captchaBox" Content="Использовать сервис распознования" HorizontalAlignment="Left" Margin="10,109,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+        <ListBox x:Name="listBoxLog" HorizontalAlignment="Left" Height="139" Margin="10,320,0,0" VerticalAlignment="Top" Width="472">
+        </ListBox>
+    </Grid>
+</Window>
